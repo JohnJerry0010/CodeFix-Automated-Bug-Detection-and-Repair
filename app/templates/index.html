@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code Bug Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- CodeMirror for Better Code Formatting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚀 Python Bug Detector</h1>
+
+        <form id="uploadForm">
+            <!-- File Upload -->
+            <label for="fileInput" class="file-upload">📂 Upload Python File</label>
+            <input type="file" id="fileInput" accept=".py">
+
+            <!-- Code Input Box -->
+            <textarea id="codeInput" name="code" placeholder="Paste your Python code here..."></textarea>
+
+            <!-- Submit Button -->
+            <button id="checkBtn" class="btn">🛠 Check for Bugs</button>
+        </form>
+
+        <!-- Error Display Box -->
+        <div id="errorBox" class="error-box" style="display: none;"></div>
+
+        <!-- Loader Animation -->
+        <div class="loader" id="loading" style="display: none;"></div>
+
+        <!-- Bug Detection Result Box (Added This) -->
+        <div id="result-box" class="result-box" style="display: none;">
+            <h2>📌 Detection Result</h2>
+            <p id="resultText"></p>
+        </div>
+    </div>
+
+   
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

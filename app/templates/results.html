@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-color: #0f0f0f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .white-text {
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .code-box {
+            background: #111827;
+            color: #d1d5db;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            border: 1px solid #00f0ff33;
+            box-shadow: 0 0 10px #00f0ff33;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .result-box {
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #1e293b;
+            box-shadow: 0 0 10px #00f0ff22;
+        }
+        .error-message {
+            color: #ff4d4d;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff4d4d88;
+        }
+        .success-message {
+            color: #00ffcc;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ffcc88;
+        }
+        .code-comparison {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .code-block {
+            flex: 1;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00d4ff;
+            color: #000;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px #00d4ff88;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #00aaff;
+            box-shadow: 0 0 12px #00aaffaa;
+            color: #fff;
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <main class="container">
+        <header class="results-header">
+            <div class="container">
+                <h1 class="white-text">Code Analysis Report</h1>
+            </div>
+
+            <a href="{{ url_for('detect.index') }}" class="btn">Analyze Another Code</a>
+        </header>
+
+        <section class="analysis-section">
+            <h2>Original Code</h2>
+            <div class="code-container">
+                <pre class="code-box"><code>{{ code }}</code></pre>
+            </div>
+        </section>
+
+        <section class="analysis-section">
+            <h2>Analysis Findings</h2>
+            <div class="result-box">
+                {% if detection_result.status == 'Bug Detected' %}
+                    <div class="error-message">
+                        🐛 Bug Detected (Confidence: {{ "%.2f"|format(detection_result.confidence * 100) }}%)
+                    </div>
+                    <p>{{ detection_result.message }}</p>
+                {% elif detection_result.status == 'Bug-Free' %}
+                    <div class="success-message">
+                        ✅ {{ detection_result.message }} (Confidence: {{ "%.2f"|format(detection_result.confidence * 100) }}%)
+                    </div>
+                {% else %}
+                    <div class="error-message">
+                        ⚠️ {{ detection_result.message }}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+
+        {% if has_bug and has_fixes %}
+        <section class="analysis-section">
+            <h2>Recommended Fix</h2>
+            <div class="result-box">
+                {% if fix_result.status == 'success' %}
+                    <h3>Fixed Code</h3>
+                    <pre class="code-box"><code>{{ fix_result.fixed_code }}</code></pre>
+                    
+                    <h3>Explanation</h3>
+                    <p>{{ fix_result.explanation }}</p>
+                {% else %}
+                    <div class="error-message">
+                        ⚠️ {{ fix_result.message }}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+        {% endif %}
+
+        
+
+        <footer class="results-footer">
+            <a href="{{ url_for('detect.index') }}" class="btn">Analyze New Code</a>
+        </footer>
+
+        <footer>
+            <p>&copy; 2025 CodeFixAI. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - CodeFixAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+
+    <header>
+        <h1>CodeFixAI Services</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('detect.index') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('detect.about') }}">About Us</a></li>
+                <li><a href="{{ url_for('detect.services') }}">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="services-container">
+        <h2>Our Services</h2>
+
+        <div class="service">
+            <h3>⚡ Bug Detection</h3>
+            <p>Automatically identify errors and issues in your code using advanced AI techniques.</p>
+        </div>
+
+        <div class="service">
+            <h3>🤖 AI-Powered Fix Suggestions</h3>
+            <p>Receive intelligent AI recommendations to fix coding errors instantly.</p>
+        </div>
+
+        <div class="service">
+            <h3>📊 Performance Analysis</h3>
+            <p>Optimize your code by analyzing inefficiencies and security vulnerabilities.</p>
+        </div>
+
+        <div class="service">
+            <h3>🔍 Code Review & Optimization</h3>
+            <p>Our system provides detailed insights on best practices and improvements for better performance.</p>
+        </div>
+
+        <div class="service">
+            <h3>🚀 Integration with Dev Tools</h3>
+            <p>Seamlessly integrate with GitHub, VS Code, and other popular development tools.</p>
+        </div>
+
+        <div class="cta-container">
+            <a href="{{ url_for('detect.home_page') }}" class="cta-button">Get Started</a>
+
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2025 CodeFixAI. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFixAI - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="hero-heading">Welcome to CodeFixAI 🚀<br>Your AI-Powered Code Debugging Assistant</h1>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('detect.index') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('detect.about') }}">About Us</a></li>
+                <li><a href="{{ url_for('detect.services') }}">Services</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Detect & Fix Bugs Instantly with AI 🤖</h2>
+            <p>Automatically scan your code for errors and get intelligent fix suggestions.</p>
+            <a href="{{ url_for('detect.home_page') }}"   class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why Choose CodeFixAI?</h2>
+        <div class="feature-grid">
+            <div class="feature-box">
+                <h3>⚡ Instant Bug Detection</h3>
+                <p>Identify errors in your code within seconds.</p>
+            </div>
+            <div class="feature-box">
+                <h3>💡 AI-Powered Fixes</h3>
+                <p>Receive smart recommendations to correct your code.</p>
+            </div>
+            
+            <div class="feature-box">
+                <h3>🔒 Secure & Efficient</h3>
+                <p>Ensure code security while optimizing performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CodeFixAI. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
